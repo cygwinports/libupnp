@@ -1,0 +1,26 @@
+NAME="libupnp"
+VERSION=1.6.21
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Universal Plug and Play library"
+DESCRIPTION=
+HOMEPAGE="http://pupnp.sourceforge.net/"
+SRC_URI="mirror://sourceforge/pupnp/libupnp-${VERSION}.tar.bz2"
+PATCH_URI="1.6.20-no-undefined.patch"
+
+PKG_NAMES="libupnp6 libupnp-devel"
+libupnp6_CONTENTS="
+	usr/bin/cygixml-2.dll
+	usr/bin/cygthreadutil-6.dll
+	usr/bin/cygupnp-6.dll
+	usr/share/doc/${NAME}
+"
+libupnp_devel_CONTENTS="
+	usr/include/upnp/
+	usr/lib/libixml.dll.a
+	usr/lib/libthreadutil.dll.a
+	usr/lib/libupnp.dll.a
+	usr/lib/pkgconfig/libupnp.pc
+"
+
+CYGCONF_ARGS="--enable-ipv6"

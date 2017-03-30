@@ -1,0 +1,33 @@
+--- origsrc/libupnp-1.6.20/ixml/Makefile.am	2016-07-07 12:05:30.000000000 -0500
++++ src/libupnp-1.6.20/ixml/Makefile.am	2016-11-16 17:37:38.705985300 -0600
+@@ -22,6 +22,7 @@ endif
+ lib_LTLIBRARIES		= libixml.la
+ 
+ libixml_la_LDFLAGS	= -version-info $(LT_VERSION_IXML) \
++			  -no-undefined \
+ 			  -export-symbols-regex '^ixml.*'
+ 
+ libixml_la_SOURCES	= \
+--- origsrc/libupnp-1.6.20/threadutil/Makefile.am	2016-07-07 12:05:30.000000000 -0500
++++ src/libupnp-1.6.20/threadutil/Makefile.am	2016-11-16 17:37:49.046325600 -0600
+@@ -16,7 +16,7 @@ endif
+ 
+ lib_LTLIBRARIES		= libthreadutil.la
+ 
+-libthreadutil_la_LDFLAGS = -version-info $(LT_VERSION_THREADUTIL)
++libthreadutil_la_LDFLAGS = -version-info $(LT_VERSION_THREADUTIL) -no-undefined
+ 
+ libthreadutil_la_SOURCES = \
+ 			inc/FreeList.h \
+--- origsrc/libupnp-1.6.20/upnp/Makefile.am	2016-07-07 12:05:30.000000000 -0500
++++ src/libupnp-1.6.20/upnp/Makefile.am	2016-11-16 17:38:39.054630800 -0600
+@@ -41,6 +41,9 @@ libupnp_la_CPPFLAGS = $(AM_CPPFLAGS) -I$
+ libupnp_la_LDFLAGS = \
+ 	-version-info $(LT_VERSION_UPNP) \
+ 	-export-symbols-regex '^Upnp.*' \
++	-no-undefined
++
++libupnp_la_LIBADD = \
+ 	$(top_builddir)/threadutil/libthreadutil.la \
+ 	$(top_builddir)/ixml/libixml.la
+ 
